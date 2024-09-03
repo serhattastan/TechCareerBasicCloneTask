@@ -109,7 +109,7 @@ fun HomeScreen(homeViewModel: HomeViewModel, navController: NavController) {
                                     Icon(Icons.Filled.Message, contentDescription = "Mesajlar", tint = Color.White)
                                 }
                                 IconButton(onClick = { navController.navigate("userMenuScreen") }) {
-                                    Icon(Icons.Filled.AccountCircle, contentDescription = "Profil", tint = Color.White)
+                                    Icon(painter = painterResource(id = R.drawable.icon_user), contentDescription = "Profil", tint = Color.White, modifier = Modifier.size(28.dp))
                                 }
                                 IconButton(onClick = { /* Kamera tıklama işlemi */ }) {
                                     Icon(Icons.Filled.CameraEnhance, contentDescription = "Kamera", tint = Color.White)
