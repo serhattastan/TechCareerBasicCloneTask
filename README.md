@@ -21,11 +21,11 @@ The project is built using Jetpack Compose and follows Material 3 design princip
 
 ## Screenshots
 
-![image_home_screen](https://github.com/user-attachments/assets/7bd8ffa1-6a32-49fd-bdbe-6be559abcf09)
+![image_home_screen](https://github.com/user-attachments/assets/5a85adb9-d4d0-4f3c-b4d6-8c799a6cc102)
 
 *The Home Screen displays a list of categories and featured products. It serves as the main entry point for users to explore different sections of the app. The top bar includes navigation options for accessing messages, user profile, and the main menu.*
 
-![image_side_menu](https://github.com/user-attachments/assets/0fda2502-f649-4731-9bf4-160fd142689f)
+![image_side_menu](https://github.com/user-attachments/assets/ce2a92ad-64c0-4005-afda-2ded5a1ce9e7)
 
 *The Side Menu provides quick access to various app sections, including property listings, vehicle listings, and user settings. It features a clean and organized layout with icons and labels for easy navigation.*
 
