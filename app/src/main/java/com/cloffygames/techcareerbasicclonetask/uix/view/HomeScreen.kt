@@ -134,12 +134,6 @@ fun HomeScreen(homeViewModel: HomeViewModel, navController: NavController) {
                     CategoryItem(category)
                 }
                 item {
-                    Divider(
-                        modifier = Modifier
-                            .background(CustomLightGray)
-                            .height(8.dp)
-                    )
-
                     // Anasayfa vitrini için başlık
                     Text(
                         text = "Anasayfa Vitrin",
