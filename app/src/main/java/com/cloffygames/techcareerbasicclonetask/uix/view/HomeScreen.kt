@@ -77,7 +77,7 @@ fun HomeScreen(homeViewModel: HomeViewModel, navController: NavController) {
         drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet {
-                SideMenu()
+                SideMenu(categories)
             }
         }
     ) {

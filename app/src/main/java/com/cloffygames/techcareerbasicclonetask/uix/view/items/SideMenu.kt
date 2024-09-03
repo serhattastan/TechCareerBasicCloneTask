@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material3.Divider
@@ -27,14 +28,17 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cloffygames.techcareerbasicclonetask.R
+import com.cloffygames.techcareerbasicclonetask.data.entity.Category
 import com.cloffygames.techcareerbasicclonetask.ui.theme.CustomLightBlue
 
 /**
  * SideMenu, uygulamanın yan menüsünü oluşturan composable fonksiyonudur.
- * Bu menü, özel menü öğeleri ve kategori öğeleri içerir.
+ * Bu menü, özel menü öğeleri ve dışarıdan alınan kategori öğeleri içerir.
+ *
+ * @param categories Dışarıdan alınan kategori listesi.
  */
 @Composable
-fun SideMenu() {
+fun SideMenu(categories: List<Category>) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize() // Menünün tüm ekranı kaplaması sağlanır
@@ -47,26 +51,16 @@ fun SideMenu() {
             SpecialMenuItem(icon = R.drawable.icon_plus, title = "İlan Ver", 40.dp, 40.dp, Color.White)
             SpecialMenuItem(icon = R.drawable.icon_otobid, title = "ile Aracını Sat", 120.dp, 40.dp, null, 2.dp)
             SpecialMenuItem(icon = R.drawable.icon_360, title = "Servisler", 40.dp, 40.dp, Color.White)
+        }
 
-            // Menü öğeleri sıralanır
-            MenuItem(icon = R.drawable.icon_home, title = "Emlak")
+        // Kategori öğeleri sıralanır
+        items(categories) { category ->
+            MenuItem(icon = category.icon, title = category.title, description = category.description)
             Divider() // Menü öğeleri arasında çizgi eklenir
-            MenuItem(icon = R.drawable.icon_car, title = "Vasıta")
-            Divider()
-            MenuItem(icon = R.drawable.icon_mas, title = "Yedek Parça")
-            Divider()
-            MenuItem(icon = R.drawable.icon_cart, title = "İkinci El ve Sıfır Alışveriş")
-            Divider()
-            MenuItem(icon = R.drawable.icon_tractor, title = "İş Makineleri ve Sanayi")
-            Divider()
-            MenuItem(icon = R.drawable.icon_service, title = "Ustalar ve Hizmetler")
-            Divider()
-            MenuItem(icon = R.drawable.icon_education, title = "Özel Ders Verenler")
-            Divider()
-            MenuItem(icon = R.drawable.icon_law, title = "İş İlanları")
         }
     }
 }
+
 
 /**
  * SpecialMenuItem, yan menüdeki özel menü öğelerini temsil eden composable fonksiyonudur.
@@ -130,11 +124,11 @@ fun SpecialMenuItem(
  * @param title Menünün başlığı.
  */
 @Composable
-fun MenuItem(icon: Int, title: String) {
+fun MenuItem(icon: Int, title: String, description: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth() // Satırın genişliğini tam olarak doldurur
-            .padding(16.dp), // Satırın çevresine dolgu eklenir
+            .padding(8.dp), // Satırın çevresine dolgu eklenir
         verticalAlignment = Alignment.CenterVertically // İçerik dikeyde ortalanır
     ) {
         Image(
@@ -143,11 +137,21 @@ fun MenuItem(icon: Int, title: String) {
             modifier = Modifier.size(40.dp) // İkon boyutu ayarlanır
         )
         Spacer(modifier = Modifier.width(16.dp)) // İkon ile metin arasına boşluk eklenir
-        Text(
-            text = title,
-            fontWeight = FontWeight.Medium,
-            fontSize = 16.sp,
-            color = Color.Black // Metin rengi siyah olarak ayarlanır
-        )
+
+        Column {
+            Text(
+                text = title,
+                fontWeight = FontWeight.Medium,
+                fontSize = 16.sp,
+                color = Color.Black // Metin rengi siyah olarak ayarlanır
+            )
+            Spacer(modifier = Modifier.height(2.dp)) // Metin arasına boşluk eklenir
+            Text(
+                text = description,
+                fontSize = 12.sp,
+                color = Color.Gray, // Metin rengi gri olarak ayarlanır
+                maxLines = 1, // Metin 2 satıra kadar gösterilir
+            )
+        }
     }
 }
